@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zuikenのツール置き場</title>
+    <style type="text/css">
+        .he{
+            height:90px;
+            background-color: #26A49A;
+        }
+        .ma{
+            height:600px;
+        }
+        .zui{
+            font-size: 40px;
+            color: white;
+        }
+        .he2{
+            background-color: #26A49A;
+            height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="he"><div class="he2"></div><span class="zui">ただのツール置き場</span></div>
+    <div class="ma">
+        <h2>その１　階乗</h2>
+        <p>階乗したい数字を入力してください: <input type="number" size="4" id="kaitext"><input type="button" id="buttonji" onclick="arat()" value="実行"></input></p>
+        <p>答え：<span id="kek"></span></p>
+        <h2>その２並べ替え</h2>
+        <p>pの両端を入力してください</p>
+        <p><input type="number" size="1" id="pleft"><span>p</span><input type="number" size="1" id="pright"><input type="button" id="buttonji" onclick="arat2()" value="実行"></input></p>
+        <p>答え：<span id="kek2"></span></p>
+        <h2>その３　組み合わせ</h2>
+        <p>cの両端を入力してください</p>
+        <p><input type="number" size="1" id="pleft2"><span>c</span><input type="number" size="1" id="pright2"><input type="button" id="buttonji" onclick="arat3()" value="実行"></input></p>
+        <p>答え：<span id="kek3"></span></p>
+    </div>
+<script>
+    function arat(){
+        document.getElementById('kek').innerText = kaijyou(document.getElementById('kaitext').value);
+    }
+    function kaijyou(num){
+      let count = 1;
+      for (let i = num; i > 0; i--) {
+        count = count * i;
+      }
+      return count;
+    }
+    function narabe(num2,num3){
+      let count = 1;
+      for (let step = 0; step < num3; step++) {
+        count = count * num2;
+        num2 -= 1;
+      }
+      return count;
+    }
+    function arat2(){
+        document.getElementById('kek2').innerText = narabe(document.getElementById('pleft').value,document.getElementById('pright').value);
+    }
+    function arat3(){
+        document.getElementById('kek3').innerText = narabe(document.getElementById('pleft2').value,document.getElementById('pright2').value) / kaijyou(document.getElementById('pright2').value);
+        
+    }
+</script>
+</body>
+</html>
